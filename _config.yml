@@ -9,13 +9,13 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
-tagline: Site Tagline
+title : Dustin Talk
+tagline: The Blog of Dustin Talk
 author :
-  name : Name Lastname
-  email : blah@email.test
-  github : username
-  twitter : username
+  name : Dustin Talk
+  email : dwtalk@gmail.com
+  github : dwtalk
+  twitter : dubyadev
   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
@@ -83,7 +83,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : dustinwtalk
     livefyre :
       site_id : 123
     intensedebate :

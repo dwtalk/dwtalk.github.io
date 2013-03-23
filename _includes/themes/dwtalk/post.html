@@ -1,0 +1,45 @@
+<div class="post">
+	<article>
+  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
+
+    <div class="date">
+      <span>{{ page.date | date_to_long_string }}</strong>
+    </div>
+
+<div class="tagbar">
+  {% unless page.categories == empty %}
+      <i class="icon-folder-open"></i>
+      {% assign categories_list = page.categories %}
+      {% include JB/categories_list %}
+  {% endunless %}  
+
+  {% unless page.tags == empty %}
+      <i class="icon-tags"></i>
+      {% assign tags_list = page.tags %}
+      {% include JB/tags_list %}
+  {% endunless %}
+</div>
+
+      {{ content }}
+
+
+
+    <hr>
+    <div class="pager">
+      <ul>
+      {% if page.previous %}
+        <li class="previous"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
+      {% else %}
+        <li class="previous disabled"><a>&larr; Previous</a></li>
+      {% endif %}
+      {% if page.next %}
+        <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+      {% else %}
+        <li class="next disabled"><a>Next &rarr;</a>
+      {% endif %}
+      </ul>
+    </div>
+    <hr>
+    {% include JB/comments %}
+</article>
+</div>

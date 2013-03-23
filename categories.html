@@ -1,8 +1,7 @@
 ---
 layout: page
 title: Categories
-header: Posts By Category
-group: navigation
+header: Blog Posts By Category
 ---
 {% include JB/setup %}
 
@@ -11,12 +10,22 @@ group: navigation
   {% include JB/categories_list %}
 </ul>
 
+<br />
 
+<div class="container-fluid tpad">
 {% for category in site.categories %} 
-  <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
-  <ul>
+<div class="row-fluid">
+	<div class="span2">
+		<span class="archyear" id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</span>
+	</div>
+	<div class="span10 text-center">
+		<ul class="inline">
     {% assign pages_list = category[1] %}  
     {% include JB/pages_list %}
-  </ul>
+	  </ul>
+	</div>
+</div>
+
 {% endfor %}
 
+</div>
