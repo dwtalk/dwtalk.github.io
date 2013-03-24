@@ -153,36 +153,11 @@ h3 code {
 	background-repeat: no-repeat repeat;
 	background-attachment: scroll;
 	background-color: transparent;
-	
+	width: 215px;
 	opacity: 0.9;
-	margin: 0px; 
+	margin: 0 auto; 
 	margin-top:30px;
 	padding-top: 10px;
-}
-
-@media (max-width: 979px) {
-.navbar-fixed-top {
-margin-bottom: 0px;
-}
-}
-
-@media (max-width: 767px) {
-.topper {
-margin-left: -20px;
-margin-right: -20px;
-}
-
-#pagination {
-              margin-left: -20px;
-            margin-right: -20px;
-}
-
-.bcard {
-   margin-left: auto;
-   margin-right: auto;
-float: none;
-}
-
 }
 
 .bcard .name {
@@ -222,6 +197,59 @@ float: none;
 	font-family: Constantia;
 	font-style: italic;
 }
+
+
+@media (max-width: 979px) {
+.navbar-fixed-top {
+margin-bottom: 0px;
+}
+}
+
+@media (max-width: 767px) {
+.topper {
+margin-left: -20px;
+margin-right: -20px;
+}
+
+#pagination {
+              margin-left: -20px;
+            margin-right: -20px;
+}
+
+.bcard {
+	margin-top: 25%;
+   margin-left: auto;
+   margin-right: auto;
+float: none;
+width: 380px;
+margin-top: ;
+}
+
+}
+
+
+@media (max-width: 400px) {
+.bcard {
+	margin-top: 25%;
+   margin-left: auto;
+   margin-right: auto;
+float: none;
+width: 320px;
+margin-top: ;
+}
+
+.bcard .desc {
+	font-size: 18px;
+}
+
+.htop .desc {
+	font-size: 18px;
+}
+
+}
+
+
+
 
 /*--HEADER--*/
 
@@ -1469,6 +1497,7 @@ form.bs-docs-example {
 
 .linkedmobile {
 text-align: center;
+overflow: hidden;
 }
 
 .footlink {
