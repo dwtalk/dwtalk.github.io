@@ -124,10 +124,19 @@ h3 code {
 	background-position: top left, center;
 }
 
+.ie6 .slideshow, .ie7 .slideshow, .ie8 .slideshow {
+	background-color: transparent;
+	background-image: url(../img/technology.jpeg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+}
+
+
 .bcard {
 	background: url("../img/header-bg.png") repeat scroll left center transparent;
 	float: right;
-	height: 180px;
+	height: 200px;
 	margin-top: 258px;
 	padding-top: 20px;
 	margin-right: 40px;
@@ -140,7 +149,7 @@ h3 code {
 	background-image: url(../img/header-bg.png);
 	background-position-x: 50%;
 	background-position-y: 50%;
-	background-size: 270px 100%;
+	background-size: 215px 100%;
 	background-repeat: no-repeat repeat;
 	background-attachment: scroll;
 	background-color: transparent;
@@ -226,9 +235,21 @@ float: none;
 			background-repeat: repeat, no-repeat;
 			background-size: 2px 2px, cover;
 			background-position: center, top left;
-			-pie-background:url(../img/pattern.png) 0 0 no-repeat, url(../img/technology.jpeg) top left no-repeat;
-			behavior: url("/assets/themes/dwtalk/js/PIE.htc");
         }
+
+.ie7 .htop {
+	background-image: url(../img/technology.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top left;
+}
+
+.ie8 .htop {
+	background-image: url(../img/technology.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top left;	
+}
 
 #maxmin { 
 	min-width: 650px; 
@@ -1474,11 +1495,34 @@ text-align: center;
 	font-size: 13px;
 }
 
+.ielt8 .hideltie7 {
+	display: none;
+}
+
+.ielt9 #iframe-chil-logo-canvas {
+	display: none;
+}
+
+#chilback {
+	display: none;
+}
+
+.ielt9 #chilback {
+	display: inline;
+	padding-top: 5px;
+}
+
 @media (max-width: 767px) {
+
+
+	.retopbg {
+		margin-left: -20px;
+		margin-right: -20px;
+	}
 
 .footlink {
 	padding-left: 30px;
-	margin-left: 10px;
+	margin-left: -20px;
 }
 }
 
