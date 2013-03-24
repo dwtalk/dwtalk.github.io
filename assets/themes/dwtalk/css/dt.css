@@ -208,6 +208,10 @@ margin-bottom: 0px;
 }
 }
 
+.slideshow {
+	margin-top: 41px;
+}
+
 @media (max-width: 767px) {
 	
 	body {
