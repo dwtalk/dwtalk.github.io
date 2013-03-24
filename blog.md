@@ -17,9 +17,8 @@ group: navigation
 	<p>{{ post.summary }}</p>
 	<div class="pagination readmore">
 		<a href="{{ BASE_PATH }}{{ post.url }}" class="rmlink">Read More →</a>
-		<div style="clear: both;"></div>
+		<div style="clear: both;">&nbsp;</div>
 	</div>
 	</li>
-	
   {% endfor %}
 </ul>
