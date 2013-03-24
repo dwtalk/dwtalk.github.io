@@ -1,0 +1,14 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<ul class="nav">
+				<li style="padding: 0; margin: 0; height: 40px;">
+					<canvas id="iframe-chil-logo-canvas" style="padding: 0; margin: 0;" width="55" height="40"></canvas>
+				</li>
+				{% assign pages_list = site.pages %}
+	            {% assign group = 'navigation' %}
+	            {% include JB/pages_list %}
+			</ul>
+		</div>
+	</div>
+</div>

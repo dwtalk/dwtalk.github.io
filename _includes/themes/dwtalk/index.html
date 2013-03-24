@@ -7,125 +7,24 @@
   <head>
 	{% include themes/dwtalk/head.html %}
   </head>
-
-<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<ul class="nav">
-					<li style="padding: 0; margin: 0; height: 40px;">
-						<canvas id="iframe-meru-logo-canvas" style="padding: 0; margin: 0;" width="55" height="40"></canvas>
-					</li>
-					{% assign pages_list = site.pages %}
-		            {% assign group = 'navigation' %}
-		            {% include JB/pages_list %}
+	<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+		{% include themes/dwtalk/navbar.html %}
+		<div class="slideshow">
+			<header class="bcard">
+				<h1 class="name">DUSTIN TALK</h1>
+				<span class="desc">Consultant,Architect,Hacker,<span id="geek">Geek</span></span>
+				<ul class="social-links">
+					<li class="linkedin"><a href="#">linkedin</a></li>
+					<li class="twitter"><a href="#">Twitter</a></li>
+					<li class="google"><a href="#">google</a></li>
+					<li class="email"><a href="#">email</a></li>
+					<li class="github"><a href="#">github</a></li>
+					<li class="googleplus "><a href="#">googleplus</a></li>
 				</ul>
-			</div>
+			</header>
 		</div>
-	</div>
-	<div class="slideshow">
-		<header class="bcard">
-			<h1 class="name">DUSTIN TALK</h1>
-			<span class="desc">Consultant,Architect,Hacker,<span id="geek">Geek</span></span>
-			<ul class="social-links">
-				<li class="linkedin"><a href="#">linkedin</a></li>
-				<li class="twitter"><a href="#">Twitter</a></li>
-				<li class="google"><a href="#">google</a></li>
-				<li class="email"><a href="#">email</a></li>
-				<li class="github"><a href="#">github</a></li>
-				<li class="googleplus "><a href="#">googleplus</a></li>
-			</ul>
-		</header>
-	</div>
-	<div id="maxmin"></div>
-
-
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="{{ ASSET_PATH }}/js/bootstrap.js"></script>
-
-	<!-- Meru Logo -->
-    <script type="text/javascript" src="{{ ASSET_PATH }}/js/merulogo.min.js"></script>
-    <script type="text/javascript" src="{{ ASSET_PATH }}/js/merulogo.util.min.js"></script>
-
-	<script> 
-		showMeruLogo('#iframe-meru-logo img', 'triangle', 'iframe-meru-logo-canvas', 55, 40, 1, .38, .21);
- function showMeruLogo(logoImg, containerID, logoCanvasID,
-                                  width, height, wordScale,
-                                  backgroundScaleX, backgroundScaleY) {
-				// Meru Logo Javascript ------------ 
-								$(logoImg).hide();
-					MeruLogo.initialize(
-				{
-					framerate: 20,
-					width: width,
-					height: height,
-
-	 colorSpeedFactor: 1,
-	 morphSpeedFactor: 1,
-	 morphStrengthFactor: 0.8,
-	 morphBaseSpeedFactor: 0.2,
-	 introSpeedFactor: 3,
-	 outroSpeedFactor: 3,
-	 normalOffsetFactor: 1.5,
-
-	 maxShapeRotation: 0.2,
-
-	 wordOffsetX: -25,
-	 wordOffsetY: 0,
-	 wordScale: 1,
-
-	 foregroundScaleX: 0.39,
-	 foregroundScaleY: 0.23,
-	 backgroundScaleX: 0.39,
-	 backgroundScaleY: 0.23,
-
-	 shadowAlpha: 0.1,
-
-	 shapeQuality: 5,
-
-	 containerID: containerID,
-	 logoCanvasID: logoCanvasID,
-	 shadowCanvasID: "null",
-			colors:[
-
-			[new MeruLogo.util.Color(22, 206, 249),  //bright blue 	 
-			new MeruLogo.util.Color(97, 204, 229)],
-
-			[new MeruLogo.util.Color(28, 106, 244),  //blue
-			new MeruLogo.util.Color(99, 144, 224)],
-
-			[new MeruLogo.util.Color(62, 249, 22), 	 //green
-			new MeruLogo.util.Color(119, 229, 97)],
-
-			[new MeruLogo.util.Color(155, 244, 28),  //green
-			new MeruLogo.util.Color(173, 226, 97)],
-
-			[new MeruLogo.util.Color(22, 249, 189),  //light green
-			new MeruLogo.util.Color(97, 229, 191)],
-
-			[new MeruLogo.util.Color(249, 227, 22),  //yellow
-			new MeruLogo.util.Color(229, 216, 97)],
-
-			[new MeruLogo.util.Color(252, 158, 0), //orange
-			new MeruLogo.util.Color(249, 207, 0)],
-
-			[new MeruLogo.util.Color(242, 29, 50),  //red
-			new MeruLogo.util.Color(221, 100, 112)],	
-
-			[new MeruLogo.util.Color(247, 25, 210),  //magenta
-			new MeruLogo.util.Color(226, 97, 211)],
-
-		],
-		inputs:[],
-					fallbackImages: [
-					   'img/fallback.png'
-					]
-	});
-	}
-
-</script>
-
-    {% include JB/analytics %}
-  </body>
+		<div id="maxmin"></div>
+		{% include themes/dwtalk/logo.html %}
+		{% include JB/analytics %}
+	</body>
 </html>
