@@ -226,7 +226,8 @@ float: none;
 			background-repeat: repeat, no-repeat;
 			background-size: 2px 2px, cover;
 			background-position: center, top left;
-			behavior: url(/assets/themes/dwtalk/js/PIE.htc);
+			-pie-background:url(../img/pattern.png) 0 0 no-repeat, url(../img/technology.jpeg) top left no-repeat;
+			behavior: url("/assets/themes/dwtalk/js/PIE.htc");
         }
 
 #maxmin { 
