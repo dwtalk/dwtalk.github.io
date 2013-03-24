@@ -226,6 +226,7 @@ float: none;
 			background-repeat: repeat, no-repeat;
 			background-size: 2px 2px, cover;
 			background-position: center, top left;
+			behavior: url(/assets/themes/dwtalk/js/PIE.htc);
         }
 
 #maxmin { 
@@ -640,7 +641,7 @@ background:url(../img/wiresdark.jpg);
   padding: 30px 0;
   margin-top: 0px;
   background-color: #1b1b1b;
-  min-height: 120px;
+  min-height: 80px;
 }
 .footer a, .footer a:hover, .footer a:visited:hover, .footer a:active, .footer a:active:hover  {
 	color: #777;
