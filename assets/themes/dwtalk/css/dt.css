@@ -320,7 +320,8 @@ body {
     margin-top:;
 }
 .footlink {
-    padding-left:30px;
+    padding-left:25px;
+	maring-left: 0px;
 }
 .navbar .container {
 	width: auto;
