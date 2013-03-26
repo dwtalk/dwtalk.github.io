@@ -307,6 +307,12 @@ body {
 .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
 	position: absolute;
 }
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+	padding: 0;
+}
+.navbar .container {
+	padding-left: 30px;
+}
 .slideshow {
     margin-top:41px;
 }
@@ -315,6 +321,11 @@ body {
 body {
     padding:0;
 	padding-top:50px;
+}
+.navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+	position: absolute;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 .bcard {
     margin-top:25%;
@@ -334,7 +345,7 @@ body {
 	padding-left: 30px;
 }
 }
-@media (max-width:400px) {
+@media (max-width:480px) {
 body {
     padding-top: 50px;
 }
@@ -343,10 +354,9 @@ h2 small {
 }
 .bcard {
     margin-top:25%;
-    margin-left:auto;
-    margin-right:auto;
+
     float:none;
-    width:320px;
+    width:100%;
     margin-top:;
 }
 .bcard .desc {
