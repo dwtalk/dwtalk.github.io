@@ -33,6 +33,10 @@ Usage:
 		{% if node.title == "About" %} class="no-ajaxy" {% endif %}
 		{% if page.url == "/index.html" %} class="no-ajaxy" {% endif %}
 		{% if page.url == "/" %} class="no-ajaxy" {% endif %}
+		{% if node.title == "Sitemap" %} class="no-ajaxy" {% endif %}
+		{% if node.title == "RSS Feed" %} class="no-ajaxy" {% endif %}
+		{% if node.title == "Atom Feed" %} class="no-ajaxy" {% endif %}
+		{% if node.title == "Dustin Talk" %} class="no-ajaxy" {% endif %}
 		>{{node.title}}</a></li>
       	{% endif %}
       {% endif %}
