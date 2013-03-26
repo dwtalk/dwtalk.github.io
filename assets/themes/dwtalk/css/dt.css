@@ -300,8 +300,12 @@ a:hover {
 }
 /*--RESPONSIVE--*/
 @media (max-width:979px) {
+body {
+	padding:0;
+	padding-top:50px;
+}
 .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
-	position: fixed;
+	position: absolute;
 }
 .slideshow {
     margin-top:41px;
@@ -310,6 +314,7 @@ a:hover {
 @media (max-width:767px) {
 body {
     padding:0;
+	padding-top:50px;
 }
 .bcard {
     margin-top:25%;
@@ -330,8 +335,8 @@ body {
 }
 }
 @media (max-width:400px) {
-    body {
-    padding-top:0;
+body {
+    padding-top: 50px;
 }
 h2 small {
     display:block;
