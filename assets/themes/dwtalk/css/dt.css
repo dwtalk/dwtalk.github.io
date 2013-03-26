@@ -298,6 +298,10 @@ a:hover {
     display:inline;
     padding-top:5px;
 }
+.addthis_toolbox {
+	float: right;
+	margin-top: -100px;
+}
 /*--RESPONSIVE--*/
 @media (max-width:979px) {
 body {

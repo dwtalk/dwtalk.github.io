@@ -35,7 +35,3 @@ JB :
     provider : google 
     google : 
         tracking_id : 'UA-39578201-1'
-  
-  sharing :
-    provider : false
-
