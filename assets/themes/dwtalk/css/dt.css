@@ -190,6 +190,38 @@ a:hover {
     font-family:Constantia;
     font-style:italic;
 }
+.parentdiv {
+	margin-left: auto;
+	margin-right: auto;
+}
+.homeblog {
+	float: left;
+	min-height: 500px;
+	width: 700px;
+	opacity: 0.9;
+	color: whitesmoke;
+	z-index: 0;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 7%;
+	background: url(../img/header-bg.png) repeat scroll left center transparent;
+}
+.homeblog .posts {
+	margin: 0;
+}
+.homeblog .posts li {
+	margin: 20px;
+}
+.homeblog a, .homeblog a:hover, .homeblog a:visited:hover, .homeblog a:active, .homeblog a:active:hover {
+    color: whitesmoke;
+}
+.homeblog .readmore {
+	border: 0;
+}
+.homeblog .rmlink {
+	color: whitesmoke;
+}
+
 /*--CUSTOM--*/
 .page {
     width:768px;
@@ -303,6 +335,20 @@ a:hover {
 	margin-top: -100px;
 }
 /*--RESPONSIVE--*/
+@media (max-width:1600px) {
+.bcard {
+    margin-top:10%;
+    margin-left:auto;
+    margin-right:auto;
+    float:none;
+}	
+.homeblog {
+	margin-left: auto;
+	margin-right: auto;
+	float: none;
+}
+}
+
 @media (max-width:979px) {
 body {
 	padding:0;
@@ -332,12 +378,10 @@ body {
 	margin-right: 0px;
 }
 .bcard {
-    margin-top:25%;
+    margin-top:10%;
     margin-left:auto;
     margin-right:auto;
     float:none;
-    width:380px;
-    margin-top:;
 }
 .footlink {
     padding-left:25px;
@@ -347,6 +391,9 @@ body {
 	width: auto;
 	padding: 0;
 	padding-left: 30px;
+}
+.homeblog {
+	width: 100%;
 }
 }
 @media (max-width:480px) {
