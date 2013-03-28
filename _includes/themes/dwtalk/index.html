@@ -27,7 +27,7 @@
 				  {% for post in site.posts %}
 				    <li>
 					<span class="ptitle">
-						<a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+						<a href="{{ BASE_PATH }}{{ post.url }}" class="no-ajaxy">{{ post.title }}</a>
 					</span>&nbsp;&raquo;&nbsp;
 					<span class="ptagline">&nbsp;{{ post.tagline }}</span>
 					<div class="pdate">{{ post.date | date_to_string }}</div> 
