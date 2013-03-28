@@ -171,6 +171,12 @@
 					if ( typeof window._gaq !== 'undefined' ) {
 						window._gaq.push(['_trackPageview', relativeUrl]);
 					}
+										
+					//look for addthis and trigger the script if possible
+					if($('.addthis_toolbox').length != 0)
+					{
+						$('#scriptwrite').html('<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>');
+					}
 
 					// Inform ReInvigorate of a state change
 					if ( typeof window.reinvigorate !== 'undefined' && typeof window.reinvigorate.ajax_track !== 'undefined' ) {
