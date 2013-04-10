@@ -223,6 +223,10 @@ a:hover {
 }
 
 /*--CUSTOM--*/
+h3 {
+	margin-bottom: 0px;
+	padding-top: 10px;
+}
 .page {
     width:768px;
     max-width:90%;
