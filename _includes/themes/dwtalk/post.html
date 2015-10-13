@@ -4,7 +4,17 @@
 
 <div class="post">
 	 <div style="max-width: 90%; margin: 0 auto;"><h2>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h2></div>
-	<article>
+	<article itemscope itemtype="http://schema.org/BlogPosting">
+		<header style="display: none;">
+		        <time pubdate itemprop="datePublished" datetime="{{ page.date }}" content="{{ page.date }}"></time>
+
+		        <h1 itemprop="name">
+		            <a href="{{ page.url }}" itemprop="url">{{ page.title }}</a>
+		        </h1>
+		    </header>
+		<section itemprop="description" style="display: none">
+			{{ page.summary }}
+		</section>
     <div class="date">
       <span>{{ page.date | date_to_long_string }}</span>
     </div>
