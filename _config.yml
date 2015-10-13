@@ -10,7 +10,7 @@ url: "http://dustinwtalk.com" # the base hostname & protocol for your site
 twitter_username: DustinTalk
 github_username:  dwtalk
 
-highlighter: true
+pygment: true
 
 permalink: /:categories/:year/:month/:day/:title 
 

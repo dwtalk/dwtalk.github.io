@@ -191,6 +191,22 @@ p, article ul, article ol {
 	padding: 25px;
 }
 
+.archlist {
+    padding-top:20px;
+    padding-left:20px;
+}
+.archlist ul {
+    padding-top:20px;
+    padding-left:20px;
+}
+.archyear {
+    font-size:30px;
+}
+.archmo {
+    font-size:25px;
+    padding-left:10px;
+}
+
 /*
 
 
@@ -214,17 +230,7 @@ p, article ul, article ol {
     color:white;
     font-weight:bolder;
 }
-.archlist {
-    padding-top:20px;
-    padding-left:20px;
-}
-.archyear {
-    font-size:30px;
-}
-.archmo {
-    font-size:25px;
-    padding-left:10px;
-}
+
 .tag_box {
     border-bottom:1px solid #eeeeee;
     padding-bottom:10px;

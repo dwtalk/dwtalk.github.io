@@ -3,9 +3,8 @@
 {% endif %}
 
 <div class="post">
+	 <div style="max-width: 90%; margin: 0 auto;"><h2>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h2></div>
 	<article>
-  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
-
     <div class="date">
       <span>{{ page.date | date_to_long_string }}</span>
     </div>

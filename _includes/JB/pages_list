@@ -30,7 +30,7 @@ Usage:
       	<li class="active"><a href="{{ BASE_PATH }}{{node.url}}" class="active {% if node.title == "About" %}no-ajaxy{% endif %}{% if page.url == "/index.html" %}no-ajaxy"{% endif %}{% if page.url == "/" %}no-ajaxy{% endif %}">{{node.title}}</a></li>
       	{% else %}
       	<li><a href="{{ BASE_PATH }}{{node.url}}"
-		{% if node.title == "About" %} class="no-ajaxy" {% endif %}
+		{% if node.title == "About" %}" {% endif %}
 		{% if page.url == "/index.html" %} class="no-ajaxy" {% endif %}
 		{% if page.url == "/" %} class="no-ajaxy" {% endif %}
 		{% if node.title == "Sitemap" %} class="no-ajaxy" {% endif %}
