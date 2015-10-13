@@ -7,6 +7,7 @@ tagline: ""
 tags : [cia, bpm]
 headerimage: "http://fr.cdn.v5.futura-sciences.com/builds/images/thumbs/2/21b967d6d8_29240_station%20spatiale%201883_NASA%20Ames%20Research%20Center.jpg"
 summary: "Using a recently declassified Sabotage Manual from the CIA, we can begin to understand corporate problems not by thinking about best practices, but instead thinking about destructive processes"
+headline: "From a consulting point of view, see how clients wreck themsevles"
 theme :
   name : dwtalk
 ---

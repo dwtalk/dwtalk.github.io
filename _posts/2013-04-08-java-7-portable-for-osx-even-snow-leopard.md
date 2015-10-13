@@ -5,7 +5,9 @@ description: ""
 category: java
 tagline: "(even snow leopard)"
 tags : [java, osx]
+headerimage: "http://fr.cdn.v5.futura-sciences.com/builds/images/thumbs/2/21b967d6d8_29240_station%20spatiale%201883_NASA%20Ames%20Research%20Center.jpg"
 summary: "Being frustrated with the limitations of the native oracle java installer, I wanted to pull out the JDK and JRE to its own folder, creating a portable java runtime and developer kit"
+headline: "Get Java 7 working on snow leopard now"
 theme :
   name : dwtalk
 ---

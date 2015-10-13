@@ -7,6 +7,7 @@ tagline: "w/ Jenkins"
 tags : [java, osx]
 headerimage: "http://fr.cdn.v5.futura-sciences.com/builds/images/thumbs/2/21b967d6d8_29240_station%20spatiale%201883_NASA%20Ames%20Research%20Center.jpg"
 summary: "Running on the latest technology platform has it's risks and rewards, but Java 7 1.7.0.17 on OSX 10.8.3 has been out for a while now and I would expect the Maven JSPC Plugin 1.4.6 to work correctly as well. I present a simple method for patching the system as well as correcting the code and giving back to open source development."
+headline: "Fix JSPC Issues for OSX, cause it gets outdates and has no maintenance"
 theme :
   name : dwtalk
 ---
