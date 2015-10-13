@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Dustin Talk</title>
+ <link href="http://dustinwtalk.com/" rel="self"/>
+ <link href="http://dustinwtalk.com"/>
+ <updated>2015-10-13T09:49:59-05:00</updated>
+ <id>http://dustinwtalk.com</id>
+ <author>
+   <name>Dustin Talk</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Fixing Maven JSPC Issues with Java 7 on OSX</title>
+   <link href="http://dustinwtalk.com/java/2013/04/18/maven-jscp-java-7-fixes"/>
+   <updated>2013-04-18T00:00:00-05:00</updated>
+   <id>http://dustinwtalk.com/java/2013/04/18/maven-jscp-java-7-fixes</id>
+   <content type="html">
+&lt;p&gt;Running on the latest technology platform has it’s risks and rewards, but Java 7 on OSX has been out for a while now and I would expect JSPC to work correctly as well. I present a simple method for patching the system as well as correcting the code and giving back to open source development.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-error&quot;&gt;The Error&lt;/h3&gt;
+&lt;p&gt;When compiling an existing application I have on OSX Mountain Lion using &lt;code&gt;Java 7.0.17&lt;/code&gt; and &lt;code&gt;Jenkins 1.5.0&lt;/code&gt; on &lt;code&gt;Maven 3.0.5&lt;/code&gt;, I ran into the following error:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Exception in thread &quot;main&quot; java.lang.AssertionError: Missing tools.jar at: /Library/Java/JavaVirtualMachines/jdk1.7.0_17.jdk/Contents/Home/Classes/classes.jar. Expression: file.exists()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&quot;row text-center&quot;&gt;
+	&lt;img src=&quot;http://dl.dropbox.com/u/15524812/Screenshots/00.png&quot; width=&quot;680&quot; alt=&quot;Java Error&quot; /&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;the-workaround&quot;&gt;The Workaround&lt;/h3&gt;
+
+&lt;p&gt;With the introduction of Java 7, tools.jar has been separated out of the classes.jar with (located in the lib directory of the jdk) and all classes are now stored in the runtime jar rt.jar located in the jre’s lib directory. We can help bypass this shortcoming with the following by creating a symbolic link for the jspc compiler:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd /Library/Java/JavaVirtualMachines/jdk1.7.0_17.jdk/Contents/Home/
+$ sudo mkdir Classes
+$ sudo ln -s ../jre/lib/rt.jar classes.jar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;the-solution&quot;&gt;The Solution&lt;/h3&gt;
+&lt;p&gt;As an open source user and developed, it’s simply not enough to create a work-around, I want to know how to perm fix this issue. Time to dig into the code.
+Looking through the plugin code, available &lt;a href=&quot;https://svn.codehaus.org/mojo/tags/jspc-maven-plugin-1.4.6/src/main/java/org/codehaus/mojo/jspc/AbstractJspcMojo.java&quot;&gt;here&lt;/a&gt;, it appears that whenever Mac OSX is detected we assume classes.jar will be available, as this is how it has been with Java 6 and prior.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Find the tools.jar and add it to the classpath
+String toolsJar = null;
+if (System.getProperty(&quot;os.name&quot;).equals(&quot;Mac OS X&quot;)) {
+  toolsJar = System.getProperty(&quot;java.home&quot;)
+    + &quot;/../Classes/classes.jar&quot;;
+} else {
+  toolsJar = System.getProperty(&quot;java.home&quot;) + File.separatorChar
+  + &quot;..&quot; + File.separatorChar + &quot;lib&quot;
+  + File.separatorChar + &quot;tools.jar&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To help fix the code a little, we just need to make the following corrections:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If we are on a mac, detect the java version&lt;/li&gt;
+  &lt;li&gt;If the version is java 7, then we have two options, use the jdk tools.jar or the rt.jar in the JRE. Although we used the rt.jar before, I would rather stick to the JDK and not presume the jre exists.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The code change would look a little something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Find the tools.jar and add it to the classpath
+String toolsJar = null;
+if (System.getProperty(&quot;os.name&quot;).equals(&quot;Mac OS X&quot;)) {
+  if(System.getProperty(&quot;java.version&quot;).compareTo(&quot;1.7&quot;) &amp;gt;= 0) {
+	toolsJar = System.getProperty(&quot;java.home&quot;)
+    + &quot;/../lib/tools.jar&quot;; 
+  } else {
+	toolsJar = System.getProperty(&quot;java.home&quot;)
+    + &quot;/../Classes/classes.jar&quot;;
+  }
+} else {
+  	  toolsJar = System.getProperty(&quot;java.home&quot;) + File.separatorChar
+  + &quot;..&quot; + File.separatorChar + &quot;lib&quot;
+  	  + File.separatorChar + &quot;tools.jar&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let’s not stop there either, version 2.0 is in alpha 3 status, and written in groovy no-less. The code for this release is located here, and looks a little different:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * Figure out where the tools.jar file lives.
+ */
+private File findToolsJar() {
+  def javaHome = new File(System.properties[&#39;java.home&#39;])
+  
+  def file
+  if (SystemUtils.IS_OS_MAC_OSX) {
+    file = new File(javaHome, &#39;../Classes/classes.jar&#39;).canonicalFile
+  }
+  else {
+    file = new File(javaHome, &#39;../lib/tools.jar&#39;).canonicalFile
+  }
+    
+  assert file.exists() : &quot;Missing tools.jar at: $file&quot;
+    
+  log.debug(&quot;Using tools.jar: $file&quot;)
+    
+  return file
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Whilst I am not as proficient in groovy as I am java, a few simple tweaks should fix this file as well:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ 	* Figure out where the tools.jar file lives.
+ 	*/
+private File findToolsJar() {
+  	  def javaHome = new File(System.properties[&#39;java.home&#39;])
+  def isJavaSeven = System.properties[&#39;java.version&#39;].split ( /\./ )[1] &amp;gt; &#39;6&#39;
+
+  def file
+  if (SystemUtils.IS_OS_MAC_OSX &amp;amp;&amp;amp; !isJavaSeven) {
+    file = new File(javaHome, &#39;../Classes/classes.jar&#39;).canonicalFile
+  }
+  else {
+    file = new File(javaHome, &#39;../lib/tools.jar&#39;).canonicalFile
+  }
+
+  assert file.exists() : &quot;Missing tools.jar at: $file&quot;
+
+  log.debug(&quot;Using tools.jar: $file&quot;)
+
+  return file
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Fixed and submitted to the Codehaus Jira Ticket.&lt;/p&gt;
+
+&lt;p&gt;With some simple investigation, we found a workaround to a rather annoying error specific to Mac OSX, the JSPC Maven Plugin and Java 7. With a little more time, hopefully we are able to give a little back to the community of open source my lively-hood relies on. I encourage you to do the same, find a bug, fix it, document it, and submit it for the better of the community.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Learnings from the CIA's Corporate Sabotage Cheatsheet</title>
+   <link href="http://dustinwtalk.com/consulting/2013/04/09/learnings-from-the-cias-corporate-sabotage-cheatsheet"/>
+   <updated>2013-04-09T00:00:00-05:00</updated>
+   <id>http://dustinwtalk.com/consulting/2013/04/09/learnings-from-the-cias-corporate-sabotage-cheatsheet</id>
+   <content type="html">
+&lt;p&gt;As a consultant one of the things that I enjoy is getting to work directly with the various levels of employees within corporations. From executives to the blue collar workmen and women I get to view a broad spectrum of personalities and efficiencies.&lt;/p&gt;
+
+&lt;p&gt;The objective of some engagements in the past has involved a gap analysis of some business processes or internal deficiency. Ultimately meetings ensue, interviews are conducted and data is gathered all to project the state of the business against industry best practices. I believe this to be an effective and valuable process, but after reading a recently de-classified release from the CIA’s Simple Sabotage Field Manual, I began thinking about a different approach, a method of adding value instantly. Instead of comparing to what’s right, what if we took the approach of discovering problems by thinking about what we would intentionally do to cause them if we so desired.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;row text-center&quot;&gt;
+	&lt;img src=&quot;/assets/themes/dwtalk/img/title.png&quot; class=&quot;&quot; alt=&quot;Simple Sabotage Field Manual&quot; /&gt;&lt;br /&gt;
+	Full text available from the &lt;a href=&quot;https://www.cia.gov/news-information/featured-story-archive/2012-featured-story-archive/CleanedUOSSSimpleSabotage_sm.pdf&quot;&gt;CIA&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is where the CIA comes into play. In 1944 the Office of Strategic Services created a simple secretive manual on how ordinary individuals can cause interference to productivity and processes with an ultimate goal of impacting a nations government through these destructive actions. One of the main areas of interest which I find highly relevant, even still today almost 70 years later, is part a of the section below.&lt;/p&gt;
+
+&lt;h3 id=&quot;general-interference-with-organizations-and-production&quot;&gt;General Interference with Organizations and Production&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;row text-center&quot;&gt;
+	&lt;img src=&quot;/assets/themes/dwtalk/img/corpsabotage.png&quot; class=&quot;&quot; alt=&quot;Simple Rules for Corporate Sabotage&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;In reviewing each of these, I can think of numerous examples (let’s use sample names in each case) of when I have seen them occur, but let’s roll through them and see if they spark a few candidate examples in your own corporation or experiences.&lt;/p&gt;
+
+&lt;h3 id=&quot;insist-of-doing-everything-through-channels&quot;&gt;1. Insist of doing everything through “channels”…&lt;/h3&gt;
+&lt;p&gt;This immediately reminds me of the mindset I have seen where some task “is someone else’s job”. No matter how simple or connected, this person, let’s call him Channel Chase forms a deep seeded view of ownership that are canyons of ignorance and non-productivity. A little extreme here, but it goes to show the value in flexibility and open-mindedness in-order to get the job done.&lt;/p&gt;
+
+&lt;h3 id=&quot;talk-as-frequently-as-possible-and-at-great-length&quot;&gt;2. … Talk as frequently as possible and at great length…&lt;/h3&gt;
+&lt;p&gt;I know this person, Rambling Ross, he is the guy who constantly is reminding me of how much he knows (by constantly speaking, even when un-necessary) and is also the reason why the meeting ran long, and I am now late. It’s amazing how much value is placed on those who know when to speak and exactly what to concisely say. That’s you Pithy Pete, Great Job!&lt;/p&gt;
+
+&lt;h3 id=&quot;when-possible-refer-all-matters-to-committees--and-make-them-as-large-as-possible&quot;&gt;3. When possible refer all matters to committees … and make [them] as large as possible…&lt;/h3&gt;
+&lt;p&gt;Meeting size is something that I have often seen done wrong, but is a key variable over which can be easily controlled. Meeting Mike likes too large of meetings which often result in cumpulsory education (to bring all up to speed), indecision, groupthink, and ultimately more meetings. The keys to setting meeting size are:
+*   Limit to those who have the largest affect the execution path
+*   Limit to the persons with the highest appropriate level of authority and responsibility
+*   Maximize viewpoint diversity to avoid groupthink
+*   If possible have an odd number of attendees
+*   Sometimes &lt;i&gt;“The best meeting is a group of three with one person sick and another out of town.”&lt;/i&gt; Thomas Kayser&lt;/p&gt;
+
+&lt;h3 id=&quot;bring-up-irrelevant-issues-as-frequently-as-possible&quot;&gt;4. Bring up irrelevant issues as frequently as possible&lt;/h3&gt;
+&lt;p&gt;This is one where fortunately a good leader can easily avert disaster. As soon as it is seen, dissolve Extraneous Eddie’s issues, appease him by reminding him that it can later be re-visited and move on. If necessary repeat “let’s not let pennies hold up dollars”.&lt;/p&gt;
+
+&lt;h3 id=&quot;haggle-over-precise-wordings&quot;&gt;5. Haggle over precise wordings&lt;/h3&gt;
+&lt;p&gt;Again, this is something that a good leader can help prevent. Here are two recommendations.	
+a. Tell Haggle Henry that the document or deliverable is simply a draft and that it can be corrected or changed later
+b. Remind Precise Penny of the “Find and Replace” feature common to most systems that will later be used, time permitting&lt;/p&gt;
+
+&lt;h3 id=&quot;attempt-to-re-open-the-question-of-the-advisability-of-a-past-decision&quot;&gt;6. … attempt to re-open the question of the advisability of [a past] decision&lt;/h3&gt;
+&lt;p&gt;If you weren’t rolling your eye’s reading number 6, then you might never have been in an argument with a significant other. Sometimes some people just won’t let things go. Seeing this in a corporate environment can be quite challenging, as it is best to avoid an emotional response and avoid triggering a deeper discussion re-hashing past decisions. This can be achieved through a simple process: Get sign-off on decisions when they are made and document it. This way when a past issue is re-opened, you can affirm that not only the individual in question, but also all stakeholders are moving forward with that direction regardless of their newfound re-interest.&lt;/p&gt;
+
+&lt;h3 id=&quot;advocate-caution--and-avoid-haste-which-might-cause-embarrassments-or-difficulties-later-on&quot;&gt;7. Advocate “caution” … and avoid haste which might cause embarrassments or difficulties later on&lt;/h3&gt;
+&lt;p&gt;As a Consultant I am often hired to solve difficult or slow moving client concerns. Reminding a client of how expensive it is for project delays and slow decisions usually helps picks up the pace of the project as I alleviate mild concerns of pace based risks. From within an organization it is just as easy to disarm Cautious Cathy by calculating and projecting the potential losses due to timeline impacts. When stakeholders see dollars down the drain it typically moves the pace of business.&lt;/p&gt;
+
+&lt;h3 id=&quot;be-worried-about-the-propriety-of-any-decision--and-whether-it-might-conflict-with-the-policy-of-some-higher-echelon&quot;&gt;8. Be worried about the propriety of any decision … and whether it might conflict with the policy of some higher echelon&lt;/h3&gt;
+&lt;p&gt;As a final name for this mindset we will call this person Pious Paul. Wanting to ensure that there is a succinct and cohesive direction of a company is a positive quality, but when it escalates to questioning the appropriateness of any decision, Pious Paul becomes destructive. He is no longer a decision maker but a decision questioner. The simple solution is to ‘fix the glitch’ (Office Space reference), but quite seriously addressing the problem directly and limiting the exposure of Pious Paul to others would be advisable until the problem is resolved.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+&lt;p&gt;After a review it is easy to see that knowing how to sabotage ourselves can help us identify where it occurs. Though we will see most of it done innocently, it does make you wonder how successful the CIA was able to utilize these efforts during World War II.&lt;/p&gt;
+
+&lt;p&gt;Perhaps you will be inspired to test your co-workers in your next corporate meetings. Are they sponsors of success or subverting saboteurs? Either way, share this post and help the Allies in the effort.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Java 7 Portable for OSX</title>
+   <link href="http://dustinwtalk.com/java/2013/04/08/java-7-portable-for-osx-even-snow-leopard"/>
+   <updated>2013-04-08T00:00:00-05:00</updated>
+   <id>http://dustinwtalk.com/java/2013/04/08/java-7-portable-for-osx-even-snow-leopard</id>
+   <content type="html">
+&lt;p&gt;Being a long time Windows and Linux user and also a Java Developer, one thing I have become accustomed to is a portable jdk contained all within one folder.
+Much like newer versions of Ubuntu, OSX has tried to ease your life by making the JDK an integral part of the operating system with custom directories, paths, and apps to change the system version of the JRE. I have found all of these utilities to be hacks that never fully work right or allow for multiple simultaneous versions of java. I also recently found out that Java 7 was limited to Lion only, and not available out of the box for Snow Leopard. This “fixes” these oversights by extracting the JDK from the native installer from Oracle, so it can be used how I want it to be used.&lt;/p&gt;
+
+&lt;h2 id=&quot;heres-the-process&quot;&gt;Here’s the process:&lt;/h2&gt;
+&lt;p&gt;Download the Java SE Development Kit 7 update 17 for MacOSX from the Oracle Website. The file should be &lt;code&gt;jdk-7u17-macosx-x64.dmg&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Mount the dmg file using finder or via the command line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hdiutil mount jdk-7u17-macosx-x64.dmg
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Copy the file “JDK 7 Update 17.pkg” from the mount to a known location such as the Desktop.&lt;/p&gt;
+
+&lt;p&gt;We can now extract the package file to a folder using the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ pkgutil --expand JDK\ 7\ Update\ 17.pkg jdk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will present us with all of the installation files for the JDK. We need to get to the JDK files though, so a few more steps.&lt;/p&gt;
+
+&lt;p&gt;Open up the jdk folder in finder and right click on the &lt;code&gt;jdk17017.pkg&lt;/code&gt; file and select “Show Package Contents”.
+You will see several files, but you will only need to copy the &lt;code&gt;Payload&lt;/code&gt; file to a known location such as the desktop.&lt;/p&gt;
+
+&lt;div class=&quot;row text-center&quot;&gt;
+	&lt;img src=&quot;/assets/themes/dwtalk/img/r.png&quot; class=&quot;&quot; alt=&quot;jdk17017.pkg&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Navigate to that location and run the following commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat Payload | gunzip -dc | cpio -i
+$ mv Contents/Home jdk1.7.0_17
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should now have a portable jdk for Java 7 update 17 in the folder &lt;code&gt;jdk1.7.0_17&lt;/code&gt; which can be used on any OSX version from Snow Leopard to Mountain Lion.&lt;/p&gt;
+
+&lt;p&gt;Don’t forget to set you &lt;code&gt;JAVA_HOME&lt;/code&gt; and &lt;code&gt;JDK_HOME&lt;/code&gt; environmental variables in your bash profile or in the &lt;code&gt;/etc/launchd.conf&lt;/code&gt; files.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Introduction</title>
+   <link href="http://dustinwtalk.com/general/2013/03/22/introduction"/>
+   <updated>2013-03-22T00:00:00-05:00</updated>
+   <id>http://dustinwtalk.com/general/2013/03/22/introduction</id>
+   <content type="html">
+&lt;p&gt;Starting a new blog with Jekyll, have it themed and ready to roll. Many thanks to Github Pages for the hosting. Let’s hope this simple blog doesn’t turn out like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/dwtalk/img/Dr_Jekyll_and_Mr_Hyde_poster.png&quot; alt=&quot;jekyll&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Peruse and give me some feedback on the &lt;a href=&quot;/&quot;&gt;site&lt;/a&gt; if you’d like.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>

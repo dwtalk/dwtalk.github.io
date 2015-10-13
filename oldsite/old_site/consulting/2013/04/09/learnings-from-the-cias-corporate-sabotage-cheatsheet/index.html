@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<!--[if lte IE 6 ]><html class="ie ielt9 ielt8 ielt7 ie6" lang="en-GB"><![endif]-->
+<!--[if IE 7 ]><html class="ie ielt9 ielt8 ie7" lang="en-GB"><![endif]-->
+<!--[if IE 8 ]><html class="ie ielt9 ie8" lang="en-GB"><![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en-GB"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en-GB"><!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+<title>Learnings from the CIA's Corporate Sabotage Cheatsheet</title>
+<meta name="description" content="">
+<meta name="author" content="Dustin Talk">
+<meta name="keywords" content="ecommerce, java, opensource, dallas, consulting, hacking, security" />
+<meta name="copyright" content="All content (c) Copyright Dustin Talk" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta property="og:title" content="Dustin Talk" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Dustin Talk"/>
+<meta property="og:image" content="http://dwtalk.github.com/assets/themese/dwtalk/img/dwtalk.jpg" />
+<meta property="og:description" content="Dustin Talk is an eCommerce Architect/Consultant in Addison TX" />
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@DustinTalk">
+<meta name="twitter:title" content="Dustin Talk Blog">
+<meta name="twitter:description" content="Dustin Talk eCommerce Consultant Architect">
+<meta name="twitter:image" content="http://dwtalk.github.com/assets/themese/dwtalk/img/dwtalk.jpg">
+
+<link href="/assets/themes/dwtalk/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/themes/dwtalk/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/themes/dwtalk/css/dt.css" rel="stylesheet" type="text/css"  media="all" />
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favicon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicon-114x114.png">
+<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script defer src="/assets/themes/dwtalk/js/modernizr.js" type="text/javascript"></script>
+<script defer src="http://platform.linkedin.com/in.js" type="text/javascript">
+  api_key: su9lhot8uatl
+  authorize: true
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/color/jquery.color-2.1.1.min.js"></script>
+
+	</head>
+	<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<ul class="nav">
+				<li style="padding: 0; margin: 0; height: 40px;">
+					<canvas id="iframe-chil-logo-canvas" style="padding: 0; margin: 0;" width="55" height="40"></canvas>
+					<img id="chilback" src="/assets/themes/dwtalk/img/chilback.png" onclick="window.location = '/';" alt="Home">
+				</li>
+				
+	            
+	            
+
+
+  
+    
+      
+      	
+      	<li><a href="/about.html"
+		 class="no-ajaxy" 
+		
+		
+		
+		
+		
+		
+		>About</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/blog.html"
+		
+		
+		
+		
+		
+		
+		
+		>Blog</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+			</ul>
+		</div>
+	</div>
+</div>
+		<div class="topper">
+	<header class="htop">
+		<h1 class="name">DUSTIN TALK</h1>
+		<span class="desc">Consultant,Architect,Hacker,<span id="geek">Geek</span></span>
+		<ul class="social-links scard">
+			<li class="linkedin"><a href="http://www.linkedin.com/in/dustintalk">linkedin</a></li>
+			<li class="twitter"><a href="https://twitter.com/intent/follow?original_referer=&amp;region=follow_link&amp;screen_name=DustinTalk&amp;tw_p=followbutton&amp;variant=2.0">Twitter</a></li>
+			<li class="email"><a href="http://kontactr.com/user/dwtalk">email</a></li>
+			<li class="github"><a href="https://github.com/dwtalk">github</a></li>
+			<li class="googleplus"><a href="https://profiles.google.com/dwtalk">googleplus</a></li>
+		</ul>
+	</header>
+</div>
+		<div id="container">
+        	
+<div class="post">
+	<article>
+  <h1>Learnings from the CIA's Corporate Sabotage Cheatsheet <small></small></h1>
+
+    <div class="date">
+      <span>09 April 2013</span>
+    </div>
+
+<div class="tagbar">
+  
+      <i class="icon-folder-open"></i>
+      
+      
+
+
+  
+     
+    	<span class="label label-info"><a href="/categories.html#consulting-ref">consulting 1</a></span>
+    
+  
+
+
+    
+
+  
+      <i class="icon-tags"></i>
+      
+      
+
+
+  
+     
+    	<span class="badge"><a href="/tags.html#cia-ref">cia 1</a></span>
+     
+    	<span class="badge"><a href="/tags.html#bpm-ref">bpm 1</a></span>
+    
+  
+
+
+
+  
+</div>
+
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+<a class="addthis_button_hackernews"></a>
+<a class="addthis_button_google_plusone_share"></a>
+<a class="addthis_button_twitter"></a>
+<a class="addthis_button_linkedin"></a>
+<a class="addthis_button_pinterest_share"></a>
+</div>
+<div id="scriptwrite">&nbsp;
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+</div>
+<!-- AddThis Button END -->
+
+      
+<p>As a consultant one of the things that I enjoy is getting to work directly with the various levels of employees within corporations. From executives to the blue collar workmen and women I get to view a broad spectrum of personalities and efficiencies.</p>
+
+<p>The objective of some engagements in the past has involved a gap analysis of some business processes or internal deficiency. Ultimately meetings ensue, interviews are conducted and data is gathered all to project the state of the business against industry best practices. I believe this to be an effective and valuable process, but after reading a recently de-classified release from the CIA’s Simple Sabotage Field Manual, I began thinking about a different approach, a method of adding value instantly. Instead of comparing to what’s right, what if we took the approach of discovering problems by thinking about what we would intentionally do to cause them if we so desired.</p>
+
+<p><br /></p>
+<div class="row text-center">
+	<img src="/assets/themes/dwtalk/img/title.png" class="" alt="Simple Sabotage Field Manual" /><br />
+	Full text available from the <a href="https://www.cia.gov/news-information/featured-story-archive/2012-featured-story-archive/CleanedUOSSSimpleSabotage_sm.pdf">CIA</a>
+</div>
+<p><br /></p>
+
+<p>This is where the CIA comes into play. In 1944 the Office of Strategic Services created a simple secretive manual on how ordinary individuals can cause interference to productivity and processes with an ultimate goal of impacting a nations government through these destructive actions. One of the main areas of interest which I find highly relevant, even still today almost 70 years later, is part a of the section below.</p>
+
+<h3 id="general-interference-with-organizations-and-production">General Interference with Organizations and Production</h3>
+<p><br /></p>
+<div class="row text-center">
+	<img src="/assets/themes/dwtalk/img/corpsabotage.png" class="" alt="Simple Rules for Corporate Sabotage" />
+</div>
+<p><br /></p>
+
+<p>In reviewing each of these, I can think of numerous examples (let’s use sample names in each case) of when I have seen them occur, but let’s roll through them and see if they spark a few candidate examples in your own corporation or experiences.</p>
+
+<h3 id="insist-of-doing-everything-through-channels">1. Insist of doing everything through “channels”…</h3>
+<p>This immediately reminds me of the mindset I have seen where some task “is someone else’s job”. No matter how simple or connected, this person, let’s call him Channel Chase forms a deep seeded view of ownership that are canyons of ignorance and non-productivity. A little extreme here, but it goes to show the value in flexibility and open-mindedness in-order to get the job done.</p>
+
+<h3 id="talk-as-frequently-as-possible-and-at-great-length">2. … Talk as frequently as possible and at great length…</h3>
+<p>I know this person, Rambling Ross, he is the guy who constantly is reminding me of how much he knows (by constantly speaking, even when un-necessary) and is also the reason why the meeting ran long, and I am now late. It’s amazing how much value is placed on those who know when to speak and exactly what to concisely say. That’s you Pithy Pete, Great Job!</p>
+
+<h3 id="when-possible-refer-all-matters-to-committees--and-make-them-as-large-as-possible">3. When possible refer all matters to committees … and make [them] as large as possible…</h3>
+<p>Meeting size is something that I have often seen done wrong, but is a key variable over which can be easily controlled. Meeting Mike likes too large of meetings which often result in cumpulsory education (to bring all up to speed), indecision, groupthink, and ultimately more meetings. The keys to setting meeting size are:
+*   Limit to those who have the largest affect the execution path
+*   Limit to the persons with the highest appropriate level of authority and responsibility
+*   Maximize viewpoint diversity to avoid groupthink
+*   If possible have an odd number of attendees
+*   Sometimes <i>“The best meeting is a group of three with one person sick and another out of town.”</i> Thomas Kayser</p>
+
+<h3 id="bring-up-irrelevant-issues-as-frequently-as-possible">4. Bring up irrelevant issues as frequently as possible</h3>
+<p>This is one where fortunately a good leader can easily avert disaster. As soon as it is seen, dissolve Extraneous Eddie’s issues, appease him by reminding him that it can later be re-visited and move on. If necessary repeat “let’s not let pennies hold up dollars”.</p>
+
+<h3 id="haggle-over-precise-wordings">5. Haggle over precise wordings</h3>
+<p>Again, this is something that a good leader can help prevent. Here are two recommendations.	
+a. Tell Haggle Henry that the document or deliverable is simply a draft and that it can be corrected or changed later
+b. Remind Precise Penny of the “Find and Replace” feature common to most systems that will later be used, time permitting</p>
+
+<h3 id="attempt-to-re-open-the-question-of-the-advisability-of-a-past-decision">6. … attempt to re-open the question of the advisability of [a past] decision</h3>
+<p>If you weren’t rolling your eye’s reading number 6, then you might never have been in an argument with a significant other. Sometimes some people just won’t let things go. Seeing this in a corporate environment can be quite challenging, as it is best to avoid an emotional response and avoid triggering a deeper discussion re-hashing past decisions. This can be achieved through a simple process: Get sign-off on decisions when they are made and document it. This way when a past issue is re-opened, you can affirm that not only the individual in question, but also all stakeholders are moving forward with that direction regardless of their newfound re-interest.</p>
+
+<h3 id="advocate-caution--and-avoid-haste-which-might-cause-embarrassments-or-difficulties-later-on">7. Advocate “caution” … and avoid haste which might cause embarrassments or difficulties later on</h3>
+<p>As a Consultant I am often hired to solve difficult or slow moving client concerns. Reminding a client of how expensive it is for project delays and slow decisions usually helps picks up the pace of the project as I alleviate mild concerns of pace based risks. From within an organization it is just as easy to disarm Cautious Cathy by calculating and projecting the potential losses due to timeline impacts. When stakeholders see dollars down the drain it typically moves the pace of business.</p>
+
+<h3 id="be-worried-about-the-propriety-of-any-decision--and-whether-it-might-conflict-with-the-policy-of-some-higher-echelon">8. Be worried about the propriety of any decision … and whether it might conflict with the policy of some higher echelon</h3>
+<p>As a final name for this mindset we will call this person Pious Paul. Wanting to ensure that there is a succinct and cohesive direction of a company is a positive quality, but when it escalates to questioning the appropriateness of any decision, Pious Paul becomes destructive. He is no longer a decision maker but a decision questioner. The simple solution is to ‘fix the glitch’ (Office Space reference), but quite seriously addressing the problem directly and limiting the exposure of Pious Paul to others would be advisable until the problem is resolved.</p>
+
+<h3 id="summary">Summary</h3>
+<p>After a review it is easy to see that knowing how to sabotage ourselves can help us identify where it occurs. Though we will see most of it done innocently, it does make you wonder how successful the CIA was able to utilize these efforts during World War II.</p>
+
+<p>Perhaps you will be inspired to test your co-workers in your next corporate meetings. Are they sponsors of success or subverting saboteurs? Either way, share this post and help the Allies in the effort.</p>
+
+
+
+
+
+    <hr>
+    <div class="pager">
+      <ul>
+      
+        <li class="previous"><a href="/java/2013/04/08/java-7-portable-for-osx-even-snow-leopard" title="Java 7 Portable for OSX">&larr; Previous</a></li>
+      
+      
+        <li class="next"><a href="/java/2013/04/18/maven-jscp-java-7-fixes" title="Fixing Maven JSPC Issues with Java 7 on OSX">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+	<div class="hideltie7">
+    	
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'dustinwtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+	</div>
+</article>
+</div>
+
+			<div class="retopbg">
+				<div class="retop">
+					<a href="#container" class="no-ajaxy">Return to top</a>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+	   		<div class="footlink">
+	<div class="span3">
+		<ul>
+			<li><a href="/">Dustin Talk</a></li>
+			<li><a href="/blog.html">Blog</a></li>
+			<li><a href="/about.html" class="no-ajaxy">About</a></li>
+		</ul>
+	</div>
+	<div class="span3">
+		<ul>
+			<li><a href="/archive.html">Archive</a></li>
+			<li><a href="/pages.html">Pages</a></li>
+			<li><a href="/categories.html">Categories</a></li>
+			<li><a href="/tags.html">Tags</a></li>
+		</ul>
+	</div>
+	<div class="span3">
+		<ul>
+			<li><a href="/atom.xml" class="no-ajaxy">Atom Feed</a></li>
+			<li><a href="/sitemap.txt" class="no-ajaxy">Sitemap</a></li>
+			<li><a href="/rss.xml" class="no-ajaxy">RSS Feed</a></li>
+		</ul>
+	</div>
+</div>
+		</footer>
+		<!--[if (gt IE 8)|!(IE)]><!-->
+<script type="text/javascript" defer src="/assets/themes/dwtalk/js/chillogo.min.js"></script>
+<script type="text/javascript" defer src="/assets/themes/dwtalk/js/chillogo.util.min.js"></script>
+<script type="text/javascript" defer src="/assets/themes/dwtalk/js/chillogo.init.min.js"></script>
+ <!--<![endif]-->
+<script defer src="//balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js" type="text/javascript"></script>
+<script defer src="//browserstate.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js" type="text/javascript"></script>
+<script defer src="/assets/themes/dwtalk/js/ajaxify-html5.js" type="text/javascript"></script> 
+<script defer src="/assets/themes/dwtalk/js/bootstrap.min.js" type="text/javascript"></script>
+    	
+	</body>
+</html>
+
+

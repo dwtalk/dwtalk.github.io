@@ -1,0 +1,60 @@
+<div class="post">
+	<article>
+  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
+
+    <div class="date">
+      <span>{{ page.date | date_to_long_string }}</span>
+    </div>
+
+<div class="tagbar">
+  {% unless page.categories == empty %}
+      <i class="icon-folder-open"></i>
+      {% assign categories_list = page.categories %}
+      {% include JB/categories_list %}
+  {% endunless %}  
+
+  {% unless page.tags == empty %}
+      <i class="icon-tags"></i>
+      {% assign tags_list = page.tags %}
+      {% include JB/tags_list %}
+  {% endunless %}
+</div>
+
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+<a class="addthis_button_hackernews"></a>
+<a class="addthis_button_google_plusone_share"></a>
+<a class="addthis_button_twitter"></a>
+<a class="addthis_button_linkedin"></a>
+<a class="addthis_button_pinterest_share"></a>
+</div>
+<div id="scriptwrite">&nbsp;
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+</div>
+<!-- AddThis Button END -->
+
+      {{ content }}
+
+
+
+    <hr>
+    <div class="pager">
+      <ul>
+      {% if page.previous %}
+        <li class="previous"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
+      {% else %}
+        <li class="previous disabled"><a>&larr; Previous</a></li>
+      {% endif %}
+      {% if page.next %}
+        <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+      {% else %}
+        <li class="next disabled"><a>Next &rarr;</a></li>
+      {% endif %}
+      </ul>
+    </div>
+    <hr>
+	<div class="hideltie7">
+    	{% include JB/comments %}
+	</div>
+</article>
+</div>

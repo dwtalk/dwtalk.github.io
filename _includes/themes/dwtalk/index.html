@@ -8,40 +8,44 @@
 	{% include themes/dwtalk/head.html %}
   </head>
 	<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+		<div class="fp">
 		{% include themes/dwtalk/navbar.html %}
-		<div class="slideshow">
-			<div class="parentdiv">
-			<header class="bcard" style="">
-				<h1 class="name">DUSTIN TALK</h1>
-				<span class="desc">Consultant,Architect,Hacker,<span id="geek">Geek</span></span>
-				<ul class="social-links scard">
-					<li class="linkedin"><a href="http://www.linkedin.com/in/dustintalk">linkedin</a></li>
-					<li class="twitter"><a href="https://twitter.com/intent/follow?original_referer=&amp;region=follow_link&amp;screen_name=DustinTalk&amp;tw_p=followbutton&amp;variant=2.0">Twitter</a></li>
-					<li class="email"><a href="http://kontactr.com/user/dwtalk">email</a></li>
-					<li class="github"><a href="https://github.com/dwtalk">github</a></li>
-					<li class="googleplus"><a href="https://profiles.google.com/dwtalk">googleplus</a></li>
-				</ul>
-			</header>
-			<div class="homeblog">
-				<ul class="posts">
+		<div style="background-image: url('{{ ASSET_PATH }}/img/stanford-torus5_b.jpg'); background-size: 100% auto; background-color: #1D214B; padding: 0px; margin: 0px; height: 300px; width: 100%; background-repeat: no-repeat;">
+		<div class="scard">
+		<header class="bcard" style="">
+			<h1 class="name">DUSTIN TALK</h1>
+			<span class="desc">Consultant,Architect,Hacker,<span id="geek">Geek</span></span>
+		</header>
+		</div>
+		</div>
+		<br />
+		<div id="container" class="container homepage">
+			<div class="post">
+				<article>
 				  {% for post in site.posts %}
-				    <li>
-					<span class="ptitle">
-						<a href="{{ BASE_PATH }}{{ post.url }}" class="no-ajaxy">{{ post.title }}</a>
-					</span>&nbsp;&raquo;&nbsp;
+					<a class="ptitle" href="{{ BASE_PATH }}{{ post.url }}">
+						{{ post.title }}
+					</a>&nbsp;&raquo;&nbsp;
 					<span class="ptagline">&nbsp;{{ post.tagline }}</span>
 					<div class="pdate">{{ post.date | date_to_string }}</div> 
 					<p>{{ post.summary }}</p>
 					<div class="pagination readmore">
 						<a href="{{ BASE_PATH }}{{ post.url }}" class="rmlink no-ajaxy">Read More →</a>
 					</div>
-					</li>
+					<br />
 				  {% endfor %}
-				</ul>
-			</div>
+				</article>
 			</div>
 		</div>
+		<br />
+		<div class="retop">
+			<a href="#container" class="no-ajaxy">return to top</a>
+		</div>
+		<footer class="footer">
+	   		{% include themes/dwtalk/foot.html %}
+		</footer>
 		{% include themes/dwtalk/logo.html %}
-		{% include JB/analytics %}
+    	{% include JB/analytics %}
+	</div>
 	</body>
 </html>

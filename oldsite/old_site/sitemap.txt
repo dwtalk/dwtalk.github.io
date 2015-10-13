@@ -1,0 +1,16 @@
+
+http://dustinwtalk.com/about.html
+http://dustinwtalk.com/archive.html
+http://dustinwtalk.com/atom.xml
+http://dustinwtalk.com/blog.html
+http://dustinwtalk.com/categories.html
+http://dustinwtalk.com/index.html
+http://dustinwtalk.com/pages.html
+http://dustinwtalk.com/rss.xml
+http://dustinwtalk.com/sitemap.txt
+http://dustinwtalk.com/tags.html
+
+http://dustinwtalk.com/java/2013/04/18/maven-jscp-java-7-fixes
+http://dustinwtalk.com/consulting/2013/04/09/learnings-from-the-cias-corporate-sabotage-cheatsheet
+http://dustinwtalk.com/java/2013/04/08/java-7-portable-for-osx-even-snow-leopard
+http://dustinwtalk.com/general/2013/03/22/introduction

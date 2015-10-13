@@ -8,21 +8,22 @@
 		{% include themes/dwtalk/head.html %}
 	</head>
 	<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+		<div class="fp">
 		{% include themes/dwtalk/navbar.html %}
-		{% include themes/dwtalk/topper.html %}
-		<div id="container">
+		<br />
+		<div id="container" class="container defaultpage">
         	{{ content }}
-			<div class="retopbg">
-				<div class="retop">
-					<a href="#container" class="no-ajaxy">Return to top</a>
-				</div>
-			</div>
+		</div>
+		<br />
+		<div class="retop">
+			<a href="#container" class="no-ajaxy"><i id="geek2" class="fa fa-caret-square-o-up gotop"></i></a>
 		</div>
 		<footer class="footer">
 	   		{% include themes/dwtalk/foot.html %}
 		</footer>
 		{% include themes/dwtalk/logo.html %}
     	{% include JB/analytics %}
+	</div>
 	</body>
 </html>
 
