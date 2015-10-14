@@ -22,8 +22,8 @@
         <article>
           {% for post in site.posts %}
           <a class="ptitle" href="{{ BASE_PATH }}{{ post.url }}">
-						{{ post.title }}
-					</a>&nbsp;&raquo;&nbsp;
+			{{ post.title }}
+		  </a>&nbsp;&raquo;&nbsp;
           <span class="ptagline">&nbsp;{{ post.tagline }}</span>
           <div class="pdate">{{ post.date | date_to_string }}</div>
           <p>{{ post.summary }}</p>
