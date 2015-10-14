@@ -1,3 +1,4 @@
-User-agent: *Disallow:
+User-agent: *
+Disallow: /archive/
 
-SITEMAP: http://dustinwtalk.com/sitemap.txt
+SITEMAP: http://dustinwtalk.com/sitemap.xml
