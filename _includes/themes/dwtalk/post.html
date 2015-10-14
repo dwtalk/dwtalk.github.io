@@ -1,22 +1,20 @@
 {% if page.headerimage %}
 <div style="background-image: url('{{ page.headerimage }}'); background-size: 100% auto; padding: 0px; margin: 0px; height: 240px; width: 100%;"></div>
 {% endif %}
-
 <div class="post">
-	 <div style="max-width: 90%; margin: 0 auto;"><h2>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h2></div>
-	<article itemscope itemtype="http://schema.org/BlogPosting">
-		<header style="display: none;">
-		        <time pubdate itemprop="datePublished" datetime="{{ page.date }}" content="{{ page.date }}"></time>
-
-		        <h1 itemprop="name">
-		            <a href="{{ page.url }}" itemprop="url">{{ page.title }}</a>
-		        </h1>
-		    </header>
-		<section itemprop="description" style="display: none">
-			{{ page.summary }}
-		</section>
-		<img src="{{ page.headerimage }}" style="display:none" itemprop="image">
-		<div itemprop="headline" style="display: none">{{ page.headline }}</div>
+  <div style="max-width: 90%; margin: 0 auto;"><h2>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h2></div>
+  <article itemscope itemtype="http://schema.org/BlogPosting">
+    <header style="display: none;">
+      <time pubdate itemprop="datePublished" datetime="{{ page.date }}" content="{{ page.date }}"></time>
+      <h1 itemprop="name">
+        <a href="{{ page.url }}" itemprop="url">{{ page.title }}</a>
+      </h1>
+    </header>
+    <section itemprop="description" style="display: none">
+      {{ page.summary }}
+    </section>
+    <img src="{{ page.headerimage }}" style="display:none" itemprop="image">
+    <div itemprop="headline" style="display: none">{{ page.headline }}</div>
     <div class="date">
       <span>{{ page.date | date_to_long_string }}</span>
     </div>
@@ -41,5 +39,5 @@
 	<div class="hideltie7">
     	{% include JB/comments %}
 	</div>
-</article>
+  </article>
 </div>

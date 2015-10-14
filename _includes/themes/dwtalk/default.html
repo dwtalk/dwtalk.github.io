@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<!--[if lte IE 6 ]><html class="ie ielt9 ielt8 ielt7 ie6" lang="en-US"><![endif]-->
-<!--[if IE 7 ]><html class="ie ielt9 ielt8 ie7" lang="en-US"><![endif]-->
-<!--[if IE 8 ]><html class="ie ielt9 ie8" lang="en-US"><![endif]-->
-<!--[if IE 9 ]><html class="ie ie9" lang="en-US"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="en-US"><!--<![endif]-->
-	<head>
-		{% include themes/dwtalk/head.html %}
-	</head>
-	<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" itemscope itemtype="http://schema.org/WebPage">
-		<div class="fp">
-		{% include themes/dwtalk/navbar.html %}
-		<br />
-		<div id="container" class="container defaultpage">
-        	{{ content }}
-		</div>
-		<br />
-		<div class="retop">
-			<a href="#container" class="no-ajaxy">return to top</a>
-		</div>
-		<footer class="footer">
-	   		{% include themes/dwtalk/foot.html %}
-		</footer>
-		{% include themes/dwtalk/logo.html %}
-    	{% include JB/analytics %}
-	</div>
-	</body>
-</html>
+<html lang="en-US">
 
+<head>
+  {% include themes/dwtalk/head.html %}
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" itemscope itemtype="http://schema.org/WebPage">
+  <div class="fp">
+    {% include themes/dwtalk/navbar.html %}
+    <br />
+    <div id="container" class="container defaultpage">
+      {{ content }}
+    </div>
+    <br />
+    <div class="retop">
+      <a href="#container" class="no-ajaxy">return to top</a>
+    </div>
+    <footer class="footer">
+      {% include themes/dwtalk/foot.html %}
+    </footer>
+    {% include themes/dwtalk/logo.html %} {% include JB/analytics %}
+  </div>
+</body>
+
+</html>

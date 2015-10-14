@@ -1,51 +1,48 @@
 <!DOCTYPE html>
-<!--[if lte IE 6 ]><html class="ie ielt9 ielt8 ielt7 ie6" lang="en-US"><![endif]-->
-<!--[if IE 7 ]><html class="ie ielt9 ielt8 ie7" lang="en-US"><![endif]-->
-<!--[if IE 8 ]><html class="ie ielt9 ie8" lang="en-US"><![endif]-->
-<!--[if IE 9 ]><html class="ie ie9" lang="en-US"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="en-US"><!--<![endif]-->
-  <head>
-	{% include themes/dwtalk/head.html %}
-  </head>
-	<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" itemscope itemtype="http://schema.org/WebPage">
-		<div class="fp">
-		{% include themes/dwtalk/navbar.html %}
-		<div style="background-image: url('{{ ASSET_PATH }}/img/stanford-torus5_b.jpg'); background-size: 100% auto; background-color: #1D214B; padding: 0px; margin: 0px; height: 300px; width: 100%; background-repeat: no-repeat;">
-		<div class="scard">
-		<header class="bcard" style="">
-			<h1 class="name">DUSTIN TALK</h1>
-			<span class="desc">Consultant,Architect,Hacker,<span id="geek">Geek</span></span>
-		</header>
-		</div>
-		</div>
-		<br />
-		<div id="container" class="container homepage">
-			<div class="post">
-				<article>
-				  {% for post in site.posts %}
-					<a class="ptitle" href="{{ BASE_PATH }}{{ post.url }}">
+<html lang="en-US">
+
+<head>
+  {% include themes/dwtalk/head.html %}
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" itemscope itemtype="http://schema.org/WebPage">
+  <div class="fp">
+    {% include themes/dwtalk/navbar.html %}
+    <div style="background-image: url('{{ ASSET_PATH }}/img/stanford-torus5_b.jpg'); background-size: 100% auto; background-color: #1D214B; padding: 0px; margin: 0px; height: 300px; width: 100%; background-repeat: no-repeat;">
+      <div class="scard">
+        <header class="bcard" style="">
+          <h1 class="name">DUSTIN TALK</h1>
+          <span class="desc">Consultant,Architect,Hacker,<span id="geek">Geek</span></span>
+        </header>
+      </div>
+    </div>
+    <br />
+    <div id="container" class="container homepage">
+      <div class="post">
+        <article>
+          {% for post in site.posts %}
+          <a class="ptitle" href="{{ BASE_PATH }}{{ post.url }}">
 						{{ post.title }}
 					</a>&nbsp;&raquo;&nbsp;
-					<span class="ptagline">&nbsp;{{ post.tagline }}</span>
-					<div class="pdate">{{ post.date | date_to_string }}</div> 
-					<p>{{ post.summary }}</p>
-					<div class="pagination readmore">
-						<a href="{{ BASE_PATH }}{{ post.url }}" class="rmlink no-ajaxy">Read More →</a>
-					</div>
-					<br />
-				  {% endfor %}
-				</article>
-			</div>
-		</div>
-		<br />
-		<div class="retop">
-			<a href="#container" class="no-ajaxy">return to top</a>
-		</div>
-		<footer class="footer">
-	   		{% include themes/dwtalk/foot.html %}
-		</footer>
-		{% include themes/dwtalk/logo.html %}
-    	{% include JB/analytics %}
-	</div>
-	</body>
+          <span class="ptagline">&nbsp;{{ post.tagline }}</span>
+          <div class="pdate">{{ post.date | date_to_string }}</div>
+          <p>{{ post.summary }}</p>
+          <div class="pagination readmore">
+            <a href="{{ BASE_PATH }}{{ post.url }}" class="rmlink no-ajaxy">Read More →</a>
+          </div>
+          <br /> {% endfor %}
+        </article>
+      </div>
+    </div>
+    <br />
+    <div class="retop">
+      <a href="#container" class="no-ajaxy">return to top</a>
+    </div>
+    <footer class="footer">
+      {% include themes/dwtalk/foot.html %}
+    </footer>
+    {% include themes/dwtalk/logo.html %} {% include JB/analytics %}
+  </div>
+</body>
+
 </html>
